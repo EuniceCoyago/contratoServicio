@@ -30,8 +30,8 @@ public class ContratoController {
     }
 
     @PostMapping
-    public Contrato saveContrato(@RequestBody Contrato contrato) {
-        return contratoService.saveContrato(contrato);
+    public Contrato guardarContrato(@RequestBody Contrato contrato) {
+        return contratoService.guardarContrato(contrato);
     }
 
     @DeleteMapping("/{id}")

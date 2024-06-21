@@ -9,4 +9,6 @@ import com.banquito.fullpay.contract.model.ServicioComisionPK;
 @Repository
 public interface ServicioComisionRepository extends JpaRepository<ServicioComision, ServicioComisionPK >{
 
+    List<ServicioComision> findByServicioCodServicio(Long codServicio);
+    List<ServicioComision> findByComisionCodComision(Long codComision);
 }

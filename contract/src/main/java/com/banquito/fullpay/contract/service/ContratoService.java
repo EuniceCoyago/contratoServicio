@@ -31,6 +31,15 @@ public class ContratoService {
     }
 
     @Transactional
+    public Contrato createContrato(Contrato contrato) {
+        try {
+            return contratoRepository.save(contrato);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al crear el contrato", e);
+        }
+    }
+
+    @Transactional
     public Contrato updateContrato(Long id, Contrato contratoDetails) {
         Contrato contrato = contratoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Contrato no encontrado"));
@@ -47,23 +56,6 @@ public class ContratoService {
                 .orElseThrow(() -> new RuntimeException("Contrato no encontrado"));
         contrato.setEstado("FIN");
         return contratoRepository.save(contrato);
-    }
-
-    public Optional<Contrato> getContratoById(Long id) {
-        try {
-            return contratoRepository.findById(id);
-        } catch (Exception e) {
-            throw new RuntimeException("Error al obtener el contrato por ID", e);
-        }
-    }
-
-    @Transactional
-    public Contrato createContrato(Contrato contrato) {
-        try {
-            return contratoRepository.save(contrato);
-        } catch (Exception e) {
-            throw new RuntimeException("Error al crear el contrato", e);
-        }
     }
 
     public List<Contrato> getContratosByDateRange(Date startDate, Date endDate) {

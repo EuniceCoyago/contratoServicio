@@ -37,7 +37,6 @@ public class Servicio implements Serializable {
     @JoinColumn(name = "COD_CONTRATO", referencedColumnName = "COD_CONTRATO", insertable = false, updatable = false)
     private Contrato contrato;
 
-    // TODO: Verificar mappedBy
     @OneToMany(mappedBy = "servicioComision")
     private List<ServicioComision> ServicioComisiones;
 

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.banquito.fullpay.contract.model.Servicio;
 
 @Repository
-public interface ServicioRepository extends JpaRepository<Servicio, Long>{
+public interface ServicioRepository extends JpaRepository<Servicio, Long> {
 
-    List<Servicio> findByCodContrato(Long codContrato);
+    List<Servicio> findByTipoServicio(String tipoServicio);
 
 }

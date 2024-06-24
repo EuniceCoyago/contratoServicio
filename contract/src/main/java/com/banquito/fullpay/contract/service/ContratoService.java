@@ -16,6 +16,7 @@ import com.banquito.fullpay.contract.util.mapper.ContratoMapper;
 import com.banquito.fullpay.contract.util.mapper.ServicioComisionMapper;
 import com.banquito.fullpay.contract.util.mapper.ServicioMapper;
 import com.banquito.fullpay.contract.model.Contrato;
+import com.banquito.fullpay.contract.model.ServicioComision;
 import com.banquito.fullpay.contract.repository.ComisionRepository;
 import com.banquito.fullpay.contract.repository.ContratoRepository;
 import com.banquito.fullpay.contract.repository.ServicioComisionRepository;
@@ -88,9 +89,8 @@ public class ContratoService {
 
     public List<ServicioComisionDTO> getComisionesByServicio(Long codServicio) {
         try {
-            return this.servComRepository.findByIdCodServicio(codServicio).stream()
-                    .map(servicioComisionMapper::toDTO)
-                    .collect(Collectors.toList());
+            List<ServicioComision> comisiones = servComRepository.findByIdCodServicio(codServicio);
+            return comisiones.stream().map(servicioComisionMapper::toDTO).collect(Collectors.toList());
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener comisiones por servicio", e);
         }
@@ -98,9 +98,8 @@ public class ContratoService {
 
     public List<ServicioComisionDTO> getServiciosByComision(Long codComision) {
         try {
-            return this.servComRepository.findByIdCodComision(codComision).stream()
-                    .map(servicioComisionMapper::toDTO)
-                    .collect(Collectors.toList());
+            List<ServicioComision> servicios = servComRepository.findByIdCodComision(codComision);
+            return servicios.stream().map(servicioComisionMapper::toDTO).collect(Collectors.toList());
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener servicios por comision", e);
         }

@@ -9,17 +9,14 @@ import org.springframework.stereotype.Service;
 
 import com.banquito.fullpay.contract.dto.ComisionDTO;
 import com.banquito.fullpay.contract.dto.ContratoDTO;
-import com.banquito.fullpay.contract.dto.ServicioComisionDTO;
 import com.banquito.fullpay.contract.dto.ServicioDTO;
 import com.banquito.fullpay.contract.util.mapper.ComisionMapper;
 import com.banquito.fullpay.contract.util.mapper.ContratoMapper;
-import com.banquito.fullpay.contract.util.mapper.ServicioComisionMapper;
 import com.banquito.fullpay.contract.util.mapper.ServicioMapper;
 import com.banquito.fullpay.contract.model.Contrato;
-import com.banquito.fullpay.contract.model.ServicioComision;
+import com.banquito.fullpay.contract.model.Servicio;
 import com.banquito.fullpay.contract.repository.ComisionRepository;
 import com.banquito.fullpay.contract.repository.ContratoRepository;
-import com.banquito.fullpay.contract.repository.ServicioComisionRepository;
 import com.banquito.fullpay.contract.repository.ServicioRepository;
 
 import jakarta.transaction.Transactional;
@@ -29,25 +26,20 @@ public class ContratoService {
 
     private final ContratoRepository contratoRepository;
     private final ComisionRepository comisionRepository;
-    private final ServicioComisionRepository servComRepository;
     private final ServicioRepository servicioRepository;
 
     private final ContratoMapper contratoMapper;
     private final ComisionMapper comisionMapper;
-    private final ServicioComisionMapper servicioComisionMapper;
     private final ServicioMapper servicioMapper;
 
     public ContratoService(ContratoRepository contratoRepository, ComisionRepository comisionRepository,
-            ServicioComisionRepository servComRepository, ServicioRepository servicioRepository,
-            ContratoMapper contratoMapper, ComisionMapper comisionMapper, ServicioComisionMapper servicioComisionMapper,
+            ServicioRepository servicioRepository, ContratoMapper contratoMapper, ComisionMapper comisionMapper,
             ServicioMapper servicioMapper) {
         this.contratoRepository = contratoRepository;
         this.comisionRepository = comisionRepository;
-        this.servComRepository = servComRepository;
         this.servicioRepository = servicioRepository;
         this.contratoMapper = contratoMapper;
         this.comisionMapper = comisionMapper;
-        this.servicioComisionMapper = servicioComisionMapper;
         this.servicioMapper = servicioMapper;
     }
 
@@ -87,24 +79,6 @@ public class ContratoService {
         }
     }
 
-    public List<ServicioComisionDTO> getComisionesByServicio(Long codServicio) {
-        try {
-            List<ServicioComision> comisiones = servComRepository.findByIdCodServicio(codServicio);
-            return comisiones.stream().map(servicioComisionMapper::toDTO).collect(Collectors.toList());
-        } catch (Exception e) {
-            throw new RuntimeException("Error al obtener comisiones por servicio", e);
-        }
-    }
-
-    public List<ServicioComisionDTO> getServiciosByComision(Long codComision) {
-        try {
-            List<ServicioComision> servicios = servComRepository.findByIdCodComision(codComision);
-            return servicios.stream().map(servicioComisionMapper::toDTO).collect(Collectors.toList());
-        } catch (Exception e) {
-            throw new RuntimeException("Error al obtener servicios por comision", e);
-        }
-    }
-
     public List<ComisionDTO> getAllComisiones() {
         try {
             return comisionRepository.findAll().stream()
@@ -127,9 +101,8 @@ public class ContratoService {
 
     public List<ServicioDTO> getServiciosByTipo(String tipoServicio) {
         try {
-            return this.servicioRepository.findByTipoServicio(tipoServicio).stream()
-                    .map(servicioMapper::toDTO)
-                    .collect(Collectors.toList());
+            List<Servicio> servicios = this.servicioRepository.findByTipoServicio(tipoServicio);
+            return servicios.stream().map(servicioMapper::toDTO).collect(Collectors.toList());
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener los servicios por tipo", e);
         }

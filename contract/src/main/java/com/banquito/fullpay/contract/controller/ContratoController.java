@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.banquito.fullpay.contract.dto.ComisionDTO;
 import com.banquito.fullpay.contract.dto.ContratoDTO;
-import com.banquito.fullpay.contract.dto.ServicioComisionDTO;
 import com.banquito.fullpay.contract.dto.ServicioDTO;
 import com.banquito.fullpay.contract.service.ContratoService;
 
@@ -85,26 +84,6 @@ public class ContratoController {
         try {
             List<ComisionDTO> comisiones = contratoService.getComisionesByTipo(tipo);
             return ResponseEntity.ok(comisiones);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @GetMapping("/servicio-comision/servicio/{codServicio}")
-    public ResponseEntity<List<ServicioComisionDTO>> getComisionesByServicio(@PathVariable Long codServicio) {
-        try {
-            List<ServicioComisionDTO> comisiones = contratoService.getComisionesByServicio(codServicio);
-            return ResponseEntity.ok(comisiones);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @GetMapping("/servicio-comision/comision/{codComision}")
-    public ResponseEntity<List<ServicioComisionDTO>> getServiciosByComision(@PathVariable Long codComision) {
-        try {
-            List<ServicioComisionDTO> servicios = contratoService.getServiciosByComision(codComision);
-            return ResponseEntity.ok(servicios);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }

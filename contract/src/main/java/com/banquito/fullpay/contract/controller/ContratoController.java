@@ -85,9 +85,9 @@ public class ContratoController {
     public ResponseEntity<List<Comision>> getComisionesByTipo(@PathVariable String tipo) {
         try {
             List<Comision> comisiones = contratoService.getComisionesByTipo(tipo);
-            return new ResponseEntity<>(comisiones, HttpStatus.OK);
+            return ResponseEntity.ok(comisiones);
         } catch (RuntimeException e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.notFound().build();
         }
     }
 

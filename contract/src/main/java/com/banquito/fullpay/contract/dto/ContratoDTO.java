@@ -4,16 +4,15 @@ import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Value;
 
-@Data
+@Value
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+
 public class ContratoDTO {
     private Long codContrato;
-    private Integer codEmpresa;
+    private Long codEmpresa;
     private String estado;
     private Date fechaInicio;
     private Date fechaFin;

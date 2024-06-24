@@ -7,9 +7,10 @@ import org.mapstruct.ReportingPolicy;
 import com.banquito.fullpay.contract.dto.ServicioDTO;
 import com.banquito.fullpay.contract.model.Servicio;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public interface ServicioMapper {
+@Mapper(
+        componentModel = MappingConstants.ComponentModel.SPRING,
+        unmappedTargetPolicy = ReportingPolicy.IGNORE
+)public interface ServicioMapper {
     ServicioDTO toDTO(Servicio servicio);
-
     Servicio toEntity(ServicioDTO servicioDTO);
 }

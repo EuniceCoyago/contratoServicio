@@ -2,42 +2,44 @@ package com.banquito.fullpay.contract.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "COR_CONTRATO")
 public class Contrato implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_CONTRATO", nullable = false)
     private Long codContrato;
-
     @Column(name = "COD_EMPRESA", nullable = false)
     private Long codEmpresa;
-
-    @Column(name = "ESTADO", nullable = false, length = 10)
+    @Column(name = "ESTADO", nullable = false, length = 3)
     private String estado;
-
-    @Column(name = "FECHA_INICIO", nullable = false)
+    @Temporal(TemporalType.DATE)
+    @Column(name = "FECHA_INICIO")
     private Date fechaInicio;
-
-    @Column(name = "FECHA_FIN", nullable = false)
+    @Temporal(TemporalType.DATE)
+    @Column(name = "FECHA_FIN")
     private Date fechaFin;
+
+    @OneToMany(mappedBy = "contrato")
+    private List<Servicio> servicios;
 
     @Override
     public int hashCode() {
@@ -63,5 +65,5 @@ public class Contrato implements Serializable {
             return false;
         return true;
     }
-    
+
 }

@@ -8,6 +8,7 @@ import com.banquito.fullpay.contract.dto.ComisionDTO;
 import com.banquito.fullpay.contract.model.Comision;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
+
 public interface ComisionMapper {
     ComisionDTO toDTO(Comision comision);
 

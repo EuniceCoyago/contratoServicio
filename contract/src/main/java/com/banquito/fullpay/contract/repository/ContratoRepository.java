@@ -11,6 +11,5 @@ import com.banquito.fullpay.contract.model.Contrato;
 @Repository
 public interface ContratoRepository extends JpaRepository<Contrato, Long> {
 
-    List<Contrato> findByFechaRango(Date fechaInicio, Date fechaFin);
-
+    List<Contrato> findByFechaInicioBetween(Date startDate, Date endDate);
 }

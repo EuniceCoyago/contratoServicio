@@ -61,7 +61,7 @@ public class ContratoService {
 
     public List<Contrato> getContratosByDateRange(Date fechaInicio, Date fechaFin) {
         try {
-            return contratoRepository.findByFechaRango(fechaInicio, fechaFin);
+            return contratoRepository.findByFechaInicioBetween(fechaInicio, fechaFin);
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener contratos por rango de fechas", e);
         }

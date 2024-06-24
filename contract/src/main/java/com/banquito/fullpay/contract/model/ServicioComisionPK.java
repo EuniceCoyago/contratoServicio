@@ -4,25 +4,23 @@ import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Embeddable
 public class ServicioComisionPK implements Serializable {
 
-    @Column(name = "COD_SERVICIO", nullable = false)
+    @Column(name = "COD_SERVICIO")
     private Long codServicio;
-    @Column(name = "COD_COMISION", nullable = false)
-    private Long codComision;
 
-    public ServicioComisionPK(Long codServicio, Long codComision) {
-        this.codServicio = codServicio;
-        this.codComision = codComision;
-    }
+    @Column(name = "COD_COMISION")
+    private Long codComision;
 
     @Override
     public int hashCode() {
@@ -54,5 +52,4 @@ public class ServicioComisionPK implements Serializable {
             return false;
         return true;
     }
-
 }

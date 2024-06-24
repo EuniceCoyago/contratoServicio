@@ -37,8 +37,8 @@ public class Servicio implements Serializable {
     @JoinColumn(name = "COD_CONTRATO", referencedColumnName = "COD_CONTRATO", insertable = false, updatable = false)
     private Contrato contrato;
 
-    @OneToMany(mappedBy = "servicioComision")
-    private List<ServicioComision> ServicioComisiones;
+    @OneToMany(mappedBy = "servicio")
+    private List<ServicioComision> servicioComisiones;
 
     @Override
     public int hashCode() {
@@ -64,5 +64,4 @@ public class Servicio implements Serializable {
             return false;
         return true;
     }
-
 }

@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -32,10 +30,6 @@ public class Servicio implements Serializable {
 
     @Column(name = "TIPO_SERVICIO", nullable = false, length = 3)
     private String tipoServicio;
-
-    @ManyToOne
-    @JoinColumn(name = "COD_CONTRATO", referencedColumnName = "COD_CONTRATO", insertable = false, updatable = false)
-    private Contrato contrato;
 
     @OneToMany(mappedBy = "servicio")
     private List<ServicioComision> servicioComisiones;

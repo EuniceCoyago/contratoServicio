@@ -13,7 +13,6 @@ import com.banquito.fullpay.contract.model.Servicio;
 import com.banquito.fullpay.contract.repository.ComisionRepository;
 import com.banquito.fullpay.contract.repository.ServicioRepository;
 
-
 @Service
 public class ContratoService {
 
@@ -23,8 +22,6 @@ public class ContratoService {
     private final ComisionMapper comisionMapper;
     private final ServicioMapper servicioMapper;
 
-  
-
     public ContratoService(ComisionRepository comisionRepository, ServicioRepository servicioRepository,
             ComisionMapper comisionMapper, ServicioMapper servicioMapper) {
         this.comisionRepository = comisionRepository;
@@ -32,7 +29,6 @@ public class ContratoService {
         this.comisionMapper = comisionMapper;
         this.servicioMapper = servicioMapper;
     }
-
 
     public List<ComisionDTO> getAllComisiones() {
         try {

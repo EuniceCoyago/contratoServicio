@@ -20,7 +20,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "COR_SERVICIO")
+@Table(name = "COR_SERVICIO", schema = "cobrosrecaudos")
 public class Servicio implements Serializable {
 
     @Id

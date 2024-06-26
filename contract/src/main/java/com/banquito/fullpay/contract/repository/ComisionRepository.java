@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.banquito.fullpay.contract.model.Comision;
 
 @Repository
-public interface ComisionRepository extends JpaRepository<Comision, Long>  {
+public interface ComisionRepository extends JpaRepository<Comision, Long> {
 
     List<Comision> findByTipo(String tipo);
 }

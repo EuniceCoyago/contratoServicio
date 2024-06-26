@@ -5,7 +5,6 @@ import lombok.Value;
 
 @Value
 @Builder
-
 public class ServicioComisionDTO {
     private Long codServicio;
     private Long codComision;

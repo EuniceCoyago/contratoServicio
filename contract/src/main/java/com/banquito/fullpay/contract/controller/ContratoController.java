@@ -22,8 +22,6 @@ public class ContratoController {
         this.contratoService = contratoService;
     }
 
-
-
     @GetMapping("/comisiones")
     public ResponseEntity<List<ComisionDTO>> getAllComisiones() {
         try {

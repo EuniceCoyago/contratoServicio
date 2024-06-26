@@ -18,7 +18,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "COR_SERVICIO_COMISION")
+@Table(name = "COR_SERVICIO_COMISION", schema = "cobrosrecaudos")
 public class ServicioComision implements Serializable {
 
     @EmbeddedId
